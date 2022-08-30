@@ -211,4 +211,14 @@ let users = {
       }, 500)
     })
   }
+
+  export function getInitialData () {
+    return Promise.all([
+      _getUsers(),
+      _getQuestions(),
+    ]).then(([users, polls]) => ({
+      users,
+      polls,
+    }))
+  }
   

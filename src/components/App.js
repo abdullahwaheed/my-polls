@@ -1,7 +1,9 @@
+import { useEffect } from "react";
 import { connect } from "react-redux";
 import { Routes, Route } from "react-router-dom";
 
 import { ROUTES } from '../constants';
+import { handleInitialData } from "../actions/shared";
 import Nav from './Nav';
 import Login from './Login';
 import Dashboard from './Dashboard';
@@ -10,8 +12,11 @@ import CreatePoll from './CreatePoll';
 
 
 function App(props) {
+  useEffect(() => {
+    props.dispatch(handleInitialData());
+  }, []);
+
   const isLoggedIn = props.user?.id;
-  console.warn(props);
 
   if (!isLoggedIn && props.history.location.pathname !== ROUTES.LOGIN) {
     props.history.push(ROUTES.LOGIN);
