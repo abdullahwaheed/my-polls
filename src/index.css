@@ -195,3 +195,36 @@ li {
   border: 1px solid #dad7d7;
   border-radius: 3px;
 }
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 20px;
+}
+
+th {
+  background-color: #e8e8e8;
+}
+
+.user-img {
+  width: 30px;
+  height: auto;
+}
+
+.table-profile {
+  display: flex;
+}
+
+.profile-info {
+  padding: 0 10px;
+}
+
+.name-title {
+  display: block;
+  font-weight: 600;
+}

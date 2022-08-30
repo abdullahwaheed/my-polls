@@ -9,6 +9,7 @@ import Login from './Login';
 import Dashboard from './Dashboard';
 import PollPage from './PollsPage';
 import CreatePoll from './CreatePoll';
+import Leaderboard from './Leaderboard';
 
 
 function App(props) {
@@ -34,6 +35,7 @@ function App(props) {
           <Route path={ROUTES.LOGIN} exact element={<Login />} />
           <Route path={ROUTES.POLL} element={<PollPage />} />
           <Route path={ROUTES.CREATE} exact element={<CreatePoll />} />
+          <Route path={ROUTES.LEADERBOARD} exact element={<Leaderboard />} />
         </Routes>
       </div>
   );

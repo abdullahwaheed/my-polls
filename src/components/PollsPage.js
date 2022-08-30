@@ -37,7 +37,6 @@ const PollPage = (props) => {
 };
 
 const mapStateToProps = ({ authedUser, users, polls }, props) => {
-  console.warn(props);
   const { id } = props.router.params;
   const poll = polls[id];
   const author = poll ? users[poll.author] : null;
