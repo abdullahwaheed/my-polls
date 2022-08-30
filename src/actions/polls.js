@@ -1,5 +1,4 @@
-import { saveQuestion, getQuestions } from "../utils";
-import { SET_POLLS, CREATE_POLL } from '../utils/actionTypes';
+import { SET_POLLS, CREATE_POLL, saveQuestion, getQuestions } from '../utils';
 import { showLoading, hideLoading } from "react-redux-loading-bar";
 
 function createPoll(poll) {

@@ -7,7 +7,7 @@ import { handleGetUsers, handleGetPolls } from '../actions';
 import Nav from './Nav';
 import Login from './Login';
 import Dashboard from './Dashboard';
-import PollPage from './PollPage';
+import PollPage from './PollsPage';
 import CreatePoll from './CreatePoll';
 
 

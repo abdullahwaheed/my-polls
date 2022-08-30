@@ -176,3 +176,7 @@ li {
   /* font-size: 15px; */
   /* height: 100px; */
 }
+
+.right-nav {
+  align-items: right;
+}
