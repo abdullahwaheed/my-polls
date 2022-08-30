@@ -1,21 +1,46 @@
 import { useState } from 'react';
-import logo from '../logo.svg';
+import { connect } from "react-redux";
 
-const Login = () => {
+import logo from '../logo.svg';
+import { loginUser } from '../actions';
+import { ROUTES } from '../utils/constants';
+import browserHistory from '../history';
+
+const Login = (props) => {
   const [user, setUser] = useState('');
   const [password, setPassword] = useState('');
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    
+  const resetForm = () => {
+    setUser('')
+    setPassword('');
   }
+
+  const checkLogin = (event) => {
+    event.preventDefault();
+    const testUser = props.users[user];
+    if (testUser) {
+        if (testUser.password === password) {
+          props.dispatch(loginUser(testUser))
+          resetForm();
+          browserHistory.push(ROUTES.HOME);
+          return;
+        }
+        else {
+          alert('Incorrect Password');
+          setPassword('');
+          return;
+        }
+    }
+    alert('Incorrect Username or Password');
+    resetForm();
+}
 
   return (
     <div className="center">
       <h2>Employee Polls</h2>
       <img className="login-image" src={logo} alt="login-img" />
       <h3>Login</h3>
-      <form className="new-poll" onSubmit={handleSubmit}>
+      <form className="new-poll" onSubmit={checkLogin}>
         <label>User</label>
         <input 
           id="user" name="user" value={user}
@@ -36,4 +61,8 @@ const Login = () => {
   );
 };
 
-export default Login;
+const mapStateToProps = ({ users }) => ({
+  users,
+});
+
+export default connect(mapStateToProps)(Login);

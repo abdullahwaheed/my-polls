@@ -1,5 +1,5 @@
-import { _saveQuestion } from "../_DATA";
-import { SET_POLLS, CREATE_POLL } from '../actionTypes';
+import { saveQuestion, getQuestions } from "../utils";
+import { SET_POLLS, CREATE_POLL } from '../utils/actionTypes';
 import { showLoading, hideLoading } from "react-redux-loading-bar";
 
 function createPoll(poll) {
@@ -15,7 +15,7 @@ export function handleCreatePoll(poll) {
 
     dispatch(showLoading());
 
-    return _saveQuestion({
+    return saveQuestion({
       
     })
       .then((poll) => dispatch(createPoll(poll)))
@@ -28,4 +28,8 @@ export function setPolls(polls) {
     type: SET_POLLS,
     polls,
   };
+}
+
+export function handleGetPolls() {
+  return dispatch => getQuestions().then(polls => dispatch(setPolls(polls)))
 }

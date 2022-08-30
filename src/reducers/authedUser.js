@@ -1,8 +1,9 @@
-import { LOGIN_USER, LOGOUT_USER } from "../actionTypes";
+import { LOGIN_USER, LOGOUT_USER } from "../utils/actionTypes";
 
 export default function authedUser(state = {}, action) {
   switch (action.type) {
     case LOGIN_USER:
+      debugger;
       return action.user;
     case LOGOUT_USER:
       return {};
