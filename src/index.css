@@ -228,3 +228,7 @@ th {
   display: block;
   font-weight: 600;
 }
+
+.poll-name {
+  display: block;
+}

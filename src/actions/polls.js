@@ -8,15 +8,11 @@ function createPoll(poll) {
   };
 }
 
-export function handleCreatePoll(poll) {
-  return (dispatch, getState) => {
-    // const { authedUser } = getState();
-
+export function handleCreatePoll(pollQuestion) {
+  return (dispatch) => {
     dispatch(showLoading());
 
-    return saveQuestion({
-      
-    })
+    return saveQuestion(pollQuestion)
       .then((poll) => dispatch(createPoll(poll)))
       .then(() => dispatch(hideLoading()));
   };

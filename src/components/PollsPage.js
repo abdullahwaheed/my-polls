@@ -16,7 +16,7 @@ const PollPage = (props) => {
 
   const renderItem = option => (
     <div className="item">
-      <span>{option.text}</span>
+      <span className="poll-name">{option.text}</span>
         <button className="btn">
           Click
         </button>
