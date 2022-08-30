@@ -18,4 +18,5 @@ export function formatPolls(polls) {
     timestamp: poll.timestamp,
     votes: poll.optionOne.votes.concat(poll.optionTwo.votes)
   }))
+  // todo: add sort by
 }

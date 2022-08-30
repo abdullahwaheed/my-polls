@@ -180,3 +180,18 @@ li {
 .right-nav {
   align-items: right;
 }
+
+.row {
+  display: inline-flex;
+  max-width: 750px;
+  padding: 20px 50px;
+}
+
+.item {
+  padding: 10px;
+  width: 100%;
+  min-width: 350px;
+  margin: 0 20px;
+  border: 1px solid #dad7d7;
+  border-radius: 3px;
+}

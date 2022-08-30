@@ -21,13 +21,4 @@ const Poll = (props) => {
   );
 };
 
-// const mapStateToProps = ({ authedUser, users, polls }, { id }) => {
-//   const poll = polls[id];
-//   return {
-//     authedUser,
-//     poll: poll
-//   };
-// };
-
-// export default connect(mapStateToProps)(Poll);
 export default Poll;
