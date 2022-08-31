@@ -5,4 +5,3 @@ export const ROUTES = {
     CREATE: '/add',
     LEADERBOARD: '/leaderboard',
 };
-

@@ -6,7 +6,7 @@ import { handleSavePollResponse } from "../actions";
 import withRouter from "../utils/withRouter";
 
 const PollPage = (props) => {
-  const { author, poll, authedUser } = props;
+  const { author, poll, authedUser, totalUsers } = props;
   if (!props.poll) {
     return (
       <div className="center">
@@ -36,12 +36,16 @@ const PollPage = (props) => {
     if (option.votes.includes(authedUser.id)) {
       btnSelectClass = 'btn-selected';
     }
+    const votes = option.votes.length;
     return (
       <div className="item">
         <span className="poll-name">{option.text}</span>
-          <button className={['btn', btnSelectClass].join(' ')} onClick={() => saveAnswer(optionName)} disabled={disabled}>
-            Click
-          </button>
+        <button className={['btn', btnSelectClass].join(' ')} onClick={() => saveAnswer(optionName)} disabled={disabled}>
+          Click
+        </button>
+        {disabled && <span className="poll-name">
+          Number of people voted: {votes} <b>({(votes / totalUsers ) * 100}%)</b></span>
+        }
       </div>
     )
   }
@@ -66,7 +70,8 @@ const mapStateToProps = ({ authedUser, users, polls }, props) => {
   return {
     authedUser,
     author,
-    poll: poll || null
+    poll: poll || null,
+    totalUsers: Object.keys(users).length,
   };
 };
 
