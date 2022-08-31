@@ -1,10 +1,12 @@
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
+
 import { ROUTES } from "../utils";
+import { handleSavePollResponse } from "../actions";
 import withRouter from "../utils/withRouter";
 
 const PollPage = (props) => {
-  const { author, poll } = props;
+  const { author, poll, authedUser } = props;
   if (!props.poll) {
     return (
       <div className="center">
@@ -14,14 +16,30 @@ const PollPage = (props) => {
     );
   };
 
-  const renderItem = option => (
-    <div className="item">
-      <span className="poll-name">{option.text}</span>
-        <button className="btn">
-          Click
-        </button>
-    </div>
-  )
+  const saveAnswer = optionName => {
+    props.dispatch(handleSavePollResponse({
+      authedUser: authedUser.id,
+      qid: poll.id,
+      answer: optionName,
+    }))
+  };
+
+  const renderItem = optionName => {
+    const option = poll[optionName];
+
+    let btnSelectClass = '';
+    if (option.votes.includes(authedUser.id)) {
+      btnSelectClass = 'btn-selected';
+    }
+    return (
+      <div className="item">
+        <span className="poll-name">{option.text}</span>
+          <button className={['btn', btnSelectClass].join(' ')} onClick={() => saveAnswer(optionName)}>
+            Click
+          </button>
+      </div>
+    )
+  }
 
   return (
     <div className="center">
@@ -29,8 +47,8 @@ const PollPage = (props) => {
       <img className="login-image" src={author.avatarURL} alt="author-avatar" />
       <h3>Would You Rather</h3>
       <div className="row">
-        {renderItem(poll.optionOne)}
-        {renderItem(poll.optionTwo)}
+        {renderItem('optionOne')}
+        {renderItem('optionTwo')}
       </div>
     </div>
   );

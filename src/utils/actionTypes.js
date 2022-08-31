@@ -4,3 +4,4 @@ export const SET_POLLS = "SET_POLLS";
 export const TOGGLE_POLL = "TOGGLE_POLL";
 export const CREATE_POLL = "CREATE_POLL";
 export const SET_USERS = "SET_USERS";
+export const SAVE_POLL_ANSWER = "SAVE_POLL_ANSWER";

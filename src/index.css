@@ -232,3 +232,26 @@ th {
 .poll-name {
   display: block;
 }
+
+.btn-selected {
+  text-transform: uppercase;
+  margin: 35px auto;
+  padding: 10px;
+  border: 1px solid rgba(0, 0, 0, 0.29);
+  cursor: pointer;
+  background: #00b33c;
+  font-size: 16px;
+  width: 250px;
+  position: relative;
+}
+
+.btn-selected:hover {
+  border-color: rgba(0, 0, 0, 0.5);
+  text-decoration: none;
+}
+
+.btn-selected:focus {
+  outline: 0;
+  font-weight: 700;
+  border-width: 2px;
+}

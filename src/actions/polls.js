@@ -1,4 +1,7 @@
-import { SET_POLLS, CREATE_POLL, saveQuestion, getQuestions } from '../utils';
+import {
+  SET_POLLS, CREATE_POLL, SAVE_POLL_ANSWER,
+  saveQuestion, getQuestions, saveQuestionAnswer
+} from '../utils';
 import { showLoading, hideLoading } from "react-redux-loading-bar";
 
 function createPoll(poll) {
@@ -28,3 +31,17 @@ export function setPolls(polls) {
 export function handleGetPolls() {
   return dispatch => getQuestions().then(polls => dispatch(setPolls(polls)))
 }
+
+function savePollResponse(pollData) {
+  return {
+    type: SAVE_POLL_ANSWER,
+    pollData,
+  };
+}
+
+export function handleSavePollResponse(pollData) {
+  return (dispatch) => {
+    return saveQuestionAnswer(pollData).then(() => dispatch(savePollResponse(pollData)));
+  };
+}
+
