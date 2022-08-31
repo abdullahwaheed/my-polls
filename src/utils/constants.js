@@ -2,7 +2,7 @@ export const ROUTES = {
     HOME: '/',
     LOGIN: '/login',
     POLL: '/poll/:id',
-    CREATE: '/create',
+    CREATE: '/add',
     LEADERBOARD: '/leaderboard',
 };
 

@@ -7,13 +7,11 @@ const Dashboard = (props) => {
   const { id: userId } = props.user;
 
   const renderPolls = polls => (
-    <ul className="dashboard-list">
+    <div className="dashboard-list">
         {polls.map(poll => (
-          <li key={poll.id}>
-            <Poll poll={poll} />
-          </li>
+          <Poll poll={poll} key={poll.id}/>
         ))}
-    </ul>
+    </div>
   );
 
   const answered = [];
