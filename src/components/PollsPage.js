@@ -6,7 +6,7 @@ import { handleSavePollResponse } from "../actions";
 import withRouter from "../utils/withRouter";
 
 const PollPage = (props) => {
-  const { author, poll, authedUser, totalUsers } = props;
+  const { author, poll, authedUser } = props;
   if (!props.poll) {
     return (
       <div className="center">
@@ -25,7 +25,8 @@ const PollPage = (props) => {
   };
 
   let disabled = false;
-  if ([...poll.optionOne.votes, ...poll.optionTwo.votes].includes(authedUser.id)) {
+  const totalVotes = [...poll.optionOne.votes, ...poll.optionTwo.votes];
+  if (totalVotes.includes(authedUser.id)) {
     disabled = true;
   }
 
@@ -36,7 +37,8 @@ const PollPage = (props) => {
     if (option.votes.includes(authedUser.id)) {
       btnSelectClass = 'btn-selected';
     }
-    const votes = option.votes.length;
+    const votesCount = option.votes.length;
+    const totalVotesCount = totalVotes.length;
     return (
       <div className="item">
         <span className="poll-name">{option.text}</span>
@@ -44,7 +46,7 @@ const PollPage = (props) => {
           Click
         </button>
         {disabled && <span className="poll-name">
-          Number of people voted: {votes} <b>({(votes / totalUsers ) * 100}%)</b></span>
+          Number of people voted: {votesCount} <b>({((votesCount / totalVotesCount ) * 100).toFixed(1)}%)</b></span>
         }
       </div>
     )
@@ -71,7 +73,6 @@ const mapStateToProps = ({ authedUser, users, polls }, props) => {
     authedUser,
     author,
     poll: poll || null,
-    totalUsers: Object.keys(users).length,
   };
 };
 
