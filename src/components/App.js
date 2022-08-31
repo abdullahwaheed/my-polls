@@ -45,11 +45,4 @@ const mapStateToProps = ({ authedUser }) => ({
   user: authedUser,
 });
 
-App.defaultProps = {
-}
-
-// App.propTypes = {
-
-// }
-
 export default connect(mapStateToProps)(App);

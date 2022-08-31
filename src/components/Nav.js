@@ -1,22 +1,38 @@
 import { Link } from "react-router-dom";
-import { ROUTES } from "../utils";
+import { connect } from "react-redux";
 
-const Nav = () => {
+import { ROUTES } from "../utils";
+import { logoutUser } from "../actions";
+import withRouter from "../utils/withRouter";
+
+const Nav = (props) => {
+
+  const handleLogout = () => {
+    props.dispatch(logoutUser());
+    props.router.navigate(ROUTES.LOGIN);
+  }
+
+  const {user} = props;
+
   return (
-    <nav className="nav">
-      <ul className="left-nav">
-        <li>
-          <Link to={ROUTES.HOME}>Home</Link>
-        </li>
-        <li>
-          <Link to={ROUTES.LEADERBOARD}>Leaderboard</Link>
-        </li>
-        <li>
-          <Link to={ROUTES.CREATE}>Create New</Link>
-        </li>
-      </ul>
-    </nav>
+    <div className="header">
+      <Link to={ROUTES.HOME}>Home</Link>
+      <Link to={ROUTES.LEADERBOARD}>Leaderboard</Link>
+      <Link to={ROUTES.CREATE}>Create New</Link>
+      <div className="header-right">
+        <span>
+          <img src={user.avatarURL} alt="user-img" className="header-img"/>
+        </span>
+        <span>{user.name}</span>
+        <a href="javascript:void(0)" onClick={handleLogout}>Logout</a>
+      </div>
+    </div>
+
   );
 };
 
-export default Nav;
+const mapStateToProps = ({ authedUser }) => ({
+  user: authedUser,
+});
+
+export default withRouter(connect(mapStateToProps)(Nav));
