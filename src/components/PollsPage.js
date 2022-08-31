@@ -21,8 +21,13 @@ const PollPage = (props) => {
       authedUser: authedUser.id,
       qid: poll.id,
       answer: optionName,
-    }))
+    }));
   };
+
+  let disabled = false;
+  if ([...poll.optionOne.votes, ...poll.optionTwo.votes].includes(authedUser.id)) {
+    disabled = true;
+  }
 
   const renderItem = optionName => {
     const option = poll[optionName];
@@ -34,7 +39,7 @@ const PollPage = (props) => {
     return (
       <div className="item">
         <span className="poll-name">{option.text}</span>
-          <button className={['btn', btnSelectClass].join(' ')} onClick={() => saveAnswer(optionName)}>
+          <button className={['btn', btnSelectClass].join(' ')} onClick={() => saveAnswer(optionName)} disabled={disabled}>
             Click
           </button>
       </div>

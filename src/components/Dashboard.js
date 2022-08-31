@@ -31,16 +31,16 @@ const Dashboard = (props) => {
   return (
     <div className="center">
       <h2>New Questions</h2>
-      {renderPolls(answered)}
-      <h2>Done</h2>
       {renderPolls(notAnswered)}
+      <h2>Done</h2>
+      {renderPolls(answered)}
     </div>
   );
 };
 
 const mapStateToProps = ({ polls, authedUser }) => ({
   polls: formatPolls(polls),
-  user: authedUser
+  user: authedUser,
 });
 
 export default connect(mapStateToProps)(Dashboard);
