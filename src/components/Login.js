@@ -4,7 +4,7 @@ import { connect } from "react-redux";
 import logo from '../logo.svg';
 import { loginUser } from '../actions';
 import { ROUTES } from '../utils/constants';
-import browserHistory from '../history';
+import withRouter from "../utils/withRouter";
 
 const Login = (props) => {
   const [user, setUser] = useState('');
@@ -22,7 +22,7 @@ const Login = (props) => {
         if (testUser.password === password) {
           props.dispatch(loginUser(testUser))
           resetForm();
-          browserHistory.push(ROUTES.HOME);
+          props.router.navigate(ROUTES.HOME);
           return;
         }
         else {
@@ -65,4 +65,4 @@ const mapStateToProps = ({ users }) => ({
   users,
 });
 
-export default connect(mapStateToProps)(Login);
+export default withRouter(connect(mapStateToProps)(Login));

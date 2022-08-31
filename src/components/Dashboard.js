@@ -16,21 +16,24 @@ const Dashboard = (props) => {
     </ul>
   );
 
-  const filterPolls = (answered = true) => (
-    props.polls.filter(poll => {
-        if (answered){
-          return poll.votes.includes(userId);
-        }
-        return !poll.votes.includes(userId)
-    })
-  );
+  const answered = [];
+  const notAnswered = [];
+
+  props.polls.forEach(poll => {
+    if (poll.votes.includes(userId)){
+      answered.push(poll)
+    }
+    else{
+      notAnswered.push(poll);
+    }
+  });
 
   return (
     <div className="center">
       <h2>New Questions</h2>
-      {renderPolls(filterPolls())}
+      {renderPolls(answered)}
       <h2>Done</h2>
-      {renderPolls(filterPolls(false))}
+      {renderPolls(notAnswered)}
     </div>
   );
 };

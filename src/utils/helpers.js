@@ -17,6 +17,5 @@ export function formatPolls(polls) {
     author: poll.author,
     timestamp: poll.timestamp,
     votes: poll.optionOne.votes.concat(poll.optionTwo.votes)
-  }))
-  // todo: add sort by
+  })).sort((first, second) => second.timestamp - first.timestamp)
 }
