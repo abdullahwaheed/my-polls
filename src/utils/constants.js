@@ -5,3 +5,8 @@ export const ROUTES = {
     CREATE: '/add',
     LEADERBOARD: '/leaderboard',
 };
+
+export const POLL_TYPES = {
+    ANSWERED: 'Answered',
+    UNANSWERED: 'Unanswered',
+};
