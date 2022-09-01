@@ -10,6 +10,7 @@ import Dashboard from './Dashboard';
 import PollPage from './PollsPage';
 import CreatePoll from './CreatePoll';
 import Leaderboard from './Leaderboard';
+import NotFound from './NotFound';
 
 function App(props) {
   useEffect(() => {
@@ -20,21 +21,22 @@ function App(props) {
   const isLoggedIn = props.user?.id;
 
   if (!isLoggedIn && props.history.location.pathname !== ROUTES.LOGIN) {
-    props.history.push(ROUTES.LOGIN);
+    props.history.push(`${ROUTES.LOGIN}?redirect=${props.history.location.pathname}`);
     return <div className="container">
-      <Login/>
+      <Login history={props.history}/>
     </div>
   }
 
   return (
     <div className="container">
       {isLoggedIn && <Nav />}
-        <Routes>
+        <Routes history={props.history}>
           <Route path={ROUTES.HOME} exact element={<Dashboard />} />
           <Route path={ROUTES.LOGIN} exact element={<Login />} />
           <Route path={ROUTES.POLL} element={<PollPage />} />
           <Route path={ROUTES.CREATE} exact element={<CreatePoll />} />
           <Route path={ROUTES.LEADERBOARD} exact element={<Leaderboard />} />
+          <Route path="*" element={<NotFound />} />
         </Routes>
       </div>
   );

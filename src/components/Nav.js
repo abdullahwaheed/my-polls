@@ -24,7 +24,7 @@ const Nav = (props) => {
           <img src={user.avatarURL} alt="user-img" className="header-img"/>
         </span>
         <span>{user.name}</span>
-        <a href="javascript:void(0)" onClick={handleLogout}>Logout</a>
+        <a href="#!" onClick={handleLogout}>Logout</a>
       </div>
     </div>
 

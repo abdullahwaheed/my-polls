@@ -14,6 +14,7 @@ const Login = (props) => {
     setUser('')
     setPassword('');
   }
+  console.log(props);
 
   const checkLogin = (event) => {
     event.preventDefault();
@@ -22,7 +23,13 @@ const Login = (props) => {
         if (testUser.password === password) {
           props.dispatch(loginUser(testUser))
           resetForm();
-          props.router.navigate(ROUTES.HOME);
+          if (props.history.location.search) {
+            const newUrl = props.history.location.search.split('=')[1];
+            props.router.navigate(newUrl);
+          }
+          else {
+            props.router.navigate(ROUTES.HOME);
+          }
           return;
         }
         else {
