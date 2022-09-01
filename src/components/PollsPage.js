@@ -1,5 +1,4 @@
 import { connect } from "react-redux";
-import { Link } from "react-router-dom";
 
 import { ROUTES } from "../utils";
 import { handleSavePollResponse } from "../actions";
@@ -10,8 +9,16 @@ const PollPage = (props) => {
   if (!props.poll) {
     return (
       <div className="center">
-        <p>This Poll doesn't exist</p>
-        <p>Go back to <Link to={ROUTES} className="poll">Dashboard</Link>.</p>
+        <div id="notfound">
+          <div className="notfound">
+            <div className="notfound-404">
+              <div></div>
+              <h1>404</h1>
+            </div>
+            <h2>Poll not found</h2>
+            <a href="#!" onClick={props.router.navigate(ROUTES.HOME)}>home page</a>
+          </div>
+        </div>
       </div>
     );
   };
