@@ -43,17 +43,17 @@ const Login = (props) => {
       <form className="new-poll" onSubmit={checkLogin}>
         <label>User</label>
         <input 
-          id="user" name="user" value={user}
+          id="user" data-testid="user" name="user" value={user}
           onChange={event => setUser(event.target.value)}
           required
         />
         <label>Password</label>
         <input
-          id="password" name="password" type="password" value={password}
+          id="password" data-testid="password" name="password" type="password" value={password}
           onChange={event => setPassword(event.target.value)}
           required
         />
-        <button className="btn" type="submit">
+        <button className="btn" type="submit" data-testid="submitBtn">
           Submit
         </button>
       </form>

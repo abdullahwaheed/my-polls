@@ -16,15 +16,15 @@ const Leaderboard = ({ users }) => {
         <tbody>
         {users.map(user =>
           <tr key={user.id}>
-            <td className="table-profile">
+            <td className="table-profile" data-testid={`${user.id}-name`}>
               <img src={user.avatarURL} alt="user-img" className="user-img"/>
               <div className="profile-info">
                 <span className="name-title">{user.name}</span>
                 <span>{user.id}</span>
               </div>
             </td>
-            <td>{user.answered}</td>
-            <td>{user.created}</td>
+            <td data-testid={`${user.id}-answered`}>{user.answered}</td>
+            <td data-testid={`${user.id}-created`}>{user.created}</td>
           </tr>
         )}
         </tbody>

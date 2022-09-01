@@ -29,6 +29,7 @@ Object {
               User
             </label>
             <input
+              data-testid="user"
               id="user"
               name="user"
               required=""
@@ -38,6 +39,7 @@ Object {
               Password
             </label>
             <input
+              data-testid="password"
               id="password"
               name="password"
               required=""
@@ -46,6 +48,7 @@ Object {
             />
             <button
               class="btn"
+              data-testid="submitBtn"
               type="submit"
             >
               Submit
@@ -80,6 +83,7 @@ Object {
             User
           </label>
           <input
+            data-testid="user"
             id="user"
             name="user"
             required=""
@@ -89,6 +93,7 @@ Object {
             Password
           </label>
           <input
+            data-testid="password"
             id="password"
             name="password"
             required=""
@@ -97,6 +102,7 @@ Object {
           />
           <button
             class="btn"
+            data-testid="submitBtn"
             type="submit"
           >
             Submit
