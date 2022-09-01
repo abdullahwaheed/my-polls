@@ -33,16 +33,18 @@ const CreatePoll = (props) => {
         <label>First Option</label>
         <input 
           id="firstOption" name="firstOption" value={firstOption}
+          data-testid="firstOption"
           onChange={event => setFirstOption(event.target.value)}
           required
         />
         <label>Second Option</label>
         <input
           id="secondOption" name="secondOption" value={secondOption}
+          data-testid="secondOption"
           onChange={event => setSecondOption(event.target.value)}
           required
         />
-        <button className="btn" type="submit">
+        <button className="btn" type="submit" data-testid="submitBtn">
           Submit
         </button>
       </form>

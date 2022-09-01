@@ -1,4 +1,4 @@
-import { _getQuestions, _getUsers, _saveQuestion, _saveQuestionAnswer } from "./_DATA";
+import { _saveQuestion, _saveQuestionAnswer } from "./_DATA";
 
 describe('_DATA', () => {
   it('verify that the saved question is returned and all expected fields are populated', async() => {
