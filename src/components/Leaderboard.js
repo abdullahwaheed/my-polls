@@ -34,13 +34,18 @@ const Leaderboard = ({ users }) => {
 };
 
 const mapStateToProps = ({ users }) => {
-  const userData = Object.values(users).map(user => ({
-    id: user.id,
-    name: user.name,
-    avatarURL: user.avatarURL,
-    answered: Object.keys(user.answers).length,
-    created: user.questions.length,
-  }))
+  const userData = Object.values(users).map(user => {
+    const answered = Object.keys(user.answers).length;
+    const created = user.questions.length;
+    return {
+      id: user.id,
+      name: user.name,
+      avatarURL: user.avatarURL,
+      answered: answered,
+      created: created,
+      sum: answered + created
+    }
+  }).sort((first, second) => second.sum - first.sum)
   return { users: userData }
 };
 
