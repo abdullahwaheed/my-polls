@@ -10,7 +10,6 @@ import Dashboard from './Dashboard';
 import PollPage from './PollsPage';
 import CreatePoll from './CreatePoll';
 import Leaderboard from './Leaderboard';
-import withRouter from '../utils/withRouter';
 
 function App(props) {
   useEffect(() => {
@@ -20,8 +19,8 @@ function App(props) {
 
   const isLoggedIn = props.user?.id;
 
-  if (!isLoggedIn && props.router.location.pathname !== ROUTES.LOGIN) {
-    props.router.navigate(ROUTES.LOGIN);
+  if (!isLoggedIn && props.history.location.pathname !== ROUTES.LOGIN) {
+    props.history.push(ROUTES.LOGIN);
     return <div className="container">
       <Login/>
     </div>
@@ -45,4 +44,4 @@ const mapStateToProps = ({ authedUser }) => ({
   user: authedUser,
 });
 
-export default withRouter(connect(mapStateToProps)(App));
+export default connect(mapStateToProps)(App);
