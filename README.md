@@ -73,6 +73,10 @@ This project login users present in `src/utils/_DATA.js` file. A logged in perso
 
 In the project directory, you can run:
 
+### `npm install`
+
+Installs the package dependencies and setup project for development prposes.
+
 ### `npm start`
 
 Runs the app in the development mode.\
